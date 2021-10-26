@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mecanica.Common", "Mecanica.Common\Mecanica.Common.csproj", "{5979B1AF-BC47-48E6-AF50-7144D2C9A82E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mecanica.API", "Mecanica.API\Mecanica.API.csproj", "{E1D675C4-5104-474B-8D3D-13380C3E974F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5979B1AF-BC47-48E6-AF50-7144D2C9A82E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5979B1AF-BC47-48E6-AF50-7144D2C9A82E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5979B1AF-BC47-48E6-AF50-7144D2C9A82E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5979B1AF-BC47-48E6-AF50-7144D2C9A82E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D675C4-5104-474B-8D3D-13380C3E974F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D675C4-5104-474B-8D3D-13380C3E974F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D675C4-5104-474B-8D3D-13380C3E974F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D675C4-5104-474B-8D3D-13380C3E974F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAAD43A4-4822-4F3C-98D5-870CC6A15941}
+	EndGlobalSection
+EndGlobal
