@@ -51,6 +51,8 @@
     @*CODIGO PARA PONER EN ESPAÑOL EL DATATABLE Y LLAAMR A LOS CDNS DEL SCRIPT RECORDAR QUE TAMBIEN HAY CDN EN CSS*@
         @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+        @*CODIGO JAVASCRIPT PARA EL BORRADO*@
+        <script src="~/js/deleteDialog.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function () {
@@ -64,7 +66,7 @@
                     ]
                 });
 
-                sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/DocumentTypes/Delete/', false);
+                sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/VehicleTypes/Delete/', false);
 
             });
         </script>
