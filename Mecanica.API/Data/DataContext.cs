@@ -14,6 +14,7 @@ namespace Mecanica.API.Data
 
         }
 
+        public DbSet<DocumentType> DocumentTypes { get; set; }
         public DbSet<Procedure> Procedures { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set; }
         
@@ -23,6 +24,7 @@ namespace Mecanica.API.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<VehicleType>().HasIndex(x => x.Description).IsUnique();
             modelBuilder.Entity<Procedure>().HasIndex(x => x.Description).IsUnique();
+            modelBuilder.Entity<DocumentType>().HasIndex(x => x.Description).IsUnique();
         }
     }
 }
