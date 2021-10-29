@@ -21,6 +21,9 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Procedures" asp-action="Index">Procedimientos</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Tipos de Vehiculos</a>
                         </li>
 
@@ -49,27 +52,7 @@
 
 
     @*CODIGO PARA PONER EN ESPAÑOL EL DATATABLE Y LLAAMR A LOS CDNS DEL SCRIPT RECORDAR QUE TAMBIEN HAY CDN EN CSS*@
-        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-        @*CODIGO JAVASCRIPT PARA EL BORRADO*@
-        <script src="~/js/deleteDialog.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('Table').DataTable({
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-                    },
-                    "aLengthMenu": [
-                        [25, 50, 100, 200, -1],
-                        [25, 50, 100, 200, "Todos"]
-                    ]
-                });
-
-                sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/VehicleTypes/Delete/', false);
-
-            });
-        </script>
     
 
 </body>
