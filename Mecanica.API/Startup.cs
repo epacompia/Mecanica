@@ -27,6 +27,10 @@ namespace Mecanica.API
             {
                 x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            //INYECTANDO EL SEEDER (EL AddTrasient sirve cuando solo lo vamos a inyectar una sola vez)
+            services.AddTransient<SeedDb>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
