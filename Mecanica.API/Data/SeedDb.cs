@@ -1,4 +1,6 @@
 ﻿using Mecanica.API.Data.Entities;
+using Mecanica.API.Helpers;
+using Mecanica.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,12 @@ namespace Mecanica.API.Data
     public class SeedDb
     {
         private readonly DataContext _context;
+        private readonly IUserHelper _userHelper;
 
-        public SeedDb(DataContext context)
+        public SeedDb(DataContext context, IUserHelper userHelper)
         {
             _context = context;
+            _userHelper = userHelper;
         }
 
         public async Task SeedAsync()
@@ -22,6 +26,43 @@ namespace Mecanica.API.Data
             await CheckBrandsAsync();
             await CheckDocumentTypesAsync();
             await CheckProceduresAsync();
+            await CheckRolesAsync();
+            await CheckUserAsync("1010", "Eduardo","Pacompia", "edu@yopmail.com", "956589658","Mz3 lt 4 Villa de Jesus", UserType.Admin);
+            await CheckUserAsync("2020", "Natalio", "Pacompia", "nat@yopmail.com", "95658111", "Mz3 lt 4 Villa de Jesus", UserType.User);
+            await CheckUserAsync("3030", "Liliana", "Santa Cruz", "lili@yopmail.com", "95658932", "Mz3 lt 4 Villa de Jesus", UserType.User);
+        }
+
+        private  async Task CheckUserAsync(string document, string firstName, string lastName, string email, string phoneNumber, string address, UserType userType)
+        {
+            User user = await _userHelper.GetUserAsync(email);
+            if (user==null)
+            {
+                user = new User
+                {
+                    Address = address,
+                    Document = document,
+                    DocumentType = _context.DocumentTypes.FirstOrDefault(x => x.Description == "DNI"),
+                    Email = email,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    PhoneNumber = phoneNumber,
+                    UserName = email,
+                    UserType = userType
+                };
+                await _userHelper.AddUserAsync(user, "123456");
+                await _userHelper.AddUserToRoleAsync(user, userType.ToString());
+            }
+        }
+
+        private Task CheckUserAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        private async Task CheckRolesAsync()
+        {
+            await _userHelper.CheckRoleAsync(UserType.Admin.ToString());
+            await _userHelper.CheckRoleAsync(UserType.User.ToString());
         }
 
         private async Task CheckProceduresAsync()

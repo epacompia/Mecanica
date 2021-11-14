@@ -1,6 +1,9 @@
 using Mecanica.API.Data;
+using Mecanica.API.Data.Entities;
+using Mecanica.API.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +25,17 @@ namespace Mecanica.API
         {
             services.AddControllersWithViews();
 
+            //1. INYECTANDO MI USER AL SISTEMA 
+            services.AddIdentity<User, IdentityRole>(x =>
+             {
+                 x.User.RequireUniqueEmail=true;
+                 x.Password.RequireDigit = false;
+                 x.Password.RequiredUniqueChars = 0;
+                 x.Password.RequireLowercase = false;
+                 x.Password.RequireNonAlphanumeric = false;
+                 x.Password.RequireUppercase = false;             
+             }).AddEntityFrameworkStores<DataContext>();
+
             //inyectando nuestra configuracion a la bd
             services.AddDbContext<DataContext>(x =>
             {
@@ -30,7 +44,7 @@ namespace Mecanica.API
 
             //INYECTANDO EL SEEDER (EL AddTrasient sirve cuando solo lo vamos a inyectar una sola vez)
             services.AddTransient<SeedDb>();
-
+            services.AddScoped<IUserHelper, UserHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +63,8 @@ namespace Mecanica.API
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            //2. tambien agrego esto despues de implemnetacion de mi User
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
