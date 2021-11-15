@@ -1,4 +1,5 @@
 ﻿using Mecanica.API.Data.Entities;
+using Mecanica.API.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,9 @@ namespace Mecanica.API.Helpers
         Task CheckRoleAsync(string roleName);
         Task AddUserToRoleAsync(User user, string roleName);
         Task<bool> IUserInRoleAsync(User user, string roleName);
+
+        //CREANDO LOS METODOS PARA LOGEARME Y DESLOGUEARME
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+        Task LogoutAsync();
     }
 }

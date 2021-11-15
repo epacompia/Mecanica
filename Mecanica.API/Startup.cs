@@ -44,6 +44,7 @@ namespace Mecanica.API
 
             //INYECTANDO EL SEEDER (EL AddTrasient sirve cuando solo lo vamos a inyectar una sola vez)
             services.AddTransient<SeedDb>();
+            //3. CONFIGURANDO EL SCOPE
             services.AddScoped<IUserHelper, UserHelper>();
         }
 
