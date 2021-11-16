@@ -1,5 +1,6 @@
 ﻿using Mecanica.API.Data;
 using Mecanica.API.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Mecanica.API.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class BrandsController: Controller
     {
         private readonly DataContext _context;
