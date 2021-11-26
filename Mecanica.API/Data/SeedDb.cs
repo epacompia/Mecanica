@@ -54,10 +54,7 @@ namespace Mecanica.API.Data
             }
         }
 
-        private Task CheckUserAsync()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         private async Task CheckRolesAsync()
         {
