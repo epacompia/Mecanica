@@ -14,5 +14,8 @@ namespace Mecanica.API.Data.Entities
         [Required(ErrorMessage ="El campo {0} es obligatorio")]
         [MaxLength(50,ErrorMessage ="El campo {0} no puede tener mas de {1} caracteres")]
         public string Descripcion { get; set; }
+
+        //RELACION DE UNO A MUCHOS CON VEHICLE (LADO UNO)
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }

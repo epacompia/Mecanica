@@ -50,5 +50,8 @@ namespace Mecanica.API.Data.Entities
         [Display(Name ="Nombre Completo")]
         public string FullName => $"{FirstName} {LastName}";
 
+
+        //RELACION DE UNO A MUCHOS CON VEHICLE (LADO UNO)
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }
