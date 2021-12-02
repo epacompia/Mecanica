@@ -50,5 +50,27 @@ namespace Mecanica.API.Data.Entities
         public string Remarks { get; set; }
 
 
+
+
+
+        //RELACION DE UNO A MUCHOS  CON VEHICLE (ESTE ES EL LADO UNO)
+        public ICollection<VehiclePhoto> VehiclePhotos { get; set; }
+        //CONTANDO CUANTAS FOTOS TIENE VEHICLEPHOTOS/ RECORDAR QUE VehiclePhotos es la propiedad ICollection<VehiclePhotos> que esta aqui arribita de esta linea osea la propiedad navigacional
+        [Display(Name ="Foto")]
+        public int VehiclePhotosCount => VehiclePhotos == null ? 0 : VehiclePhotos.Count;
+
+        //TODO: FIX THE CORRECT PATH
+        [Display(Name = "Foto")]
+        public string ImageFullPath => VehiclePhotos == null || VehiclePhotos.Count == 0
+            ? $"https://localhost:44332/images/noimage.png"
+            : VehiclePhotos.FirstOrDefault().ImageFullPath;
+
+
+        //RELACION DE VEHICLE CON HISTORY Es decir el numnero de historias que tiene ese vehiculo
+        public ICollection<History> Histories { get; set; }
+
+        [Display(Name ="# de Historias")]
+        public int HistoriesCount => Histories == null ? 0 : Histories.Count;
+
     }
 }

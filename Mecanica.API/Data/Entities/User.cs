@@ -53,5 +53,11 @@ namespace Mecanica.API.Data.Entities
 
         //RELACION DE UNO A MUCHOS CON VEHICLE (LADO UNO)
         public ICollection<Vehicle> Vehicles { get; set; }
+
+        //RELACION DE VEHICLE CON HISTORY Es decir el numnero de historias que tiene ese vehiculo
+        //ESTAS SON LAS HISTORIAS QUE A ATENDIDO UN DETERMINADO MECANICO
+        //public ICollection<History> Histories { get; set; }
+
+       
     }
 }
