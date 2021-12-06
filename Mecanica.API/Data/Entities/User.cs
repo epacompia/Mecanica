@@ -53,10 +53,18 @@ namespace Mecanica.API.Data.Entities
 
         //RELACION DE UNO A MUCHOS CON VEHICLE (LADO UNO)
         public ICollection<Vehicle> Vehicles { get; set; }
+        // AGREGO LA PROPIEDAD DE LECTURA PARA Vehicle
+        [Display(Name = "# de vehiculos")]
+        public int VehiclesCount => Vehicles == null ? 0 : Vehicles.Count;
+
+
 
         //RELACION DE VEHICLE CON HISTORY Es decir el numnero de historias que tiene ese vehiculo
         //ESTAS SON LAS HISTORIAS QUE A ATENDIDO UN DETERMINADO MECANICO
         //public ICollection<History> Histories { get; set; }
+
+
+
 
        
     }

@@ -45,7 +45,10 @@ namespace Mecanica.API
             //INYECTANDO EL SEEDER (EL AddTrasient sirve cuando solo lo vamos a inyectar una sola vez)
             services.AddTransient<SeedDb>();
             //3. CONFIGURANDO EL SCOPE
+            //************ INYECTO EL USERHELPER
             services.AddScoped<IUserHelper, UserHelper>();
+            //************INYECTO EL COMBOSHELPER
+            services.AddScoped<ICombosHelper, CombosHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
